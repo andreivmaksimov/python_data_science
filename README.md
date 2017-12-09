@@ -21,7 +21,7 @@ mkdir notebooks
 ```
 Run Docker container with the following command:
 ```sh
-docker run -it -p 8888:8888 -p 6006:6006 -d -v ./notebooks:/notebooks amaksimov/python_data_science
+docker run -it -p 8888:8888 -p 6006:6006 -d -v $(pwd)/notebooks:/notebooks amaksimov/python_data_science
 ```
 We're using following parameters:
 - ```-p 8888:8888``` to export Jupyter Web interface
