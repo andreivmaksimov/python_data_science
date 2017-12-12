@@ -1,7 +1,7 @@
 FROM ubuntu:16.04 as opencv-builder
 MAINTAINER "Andrei Maksimov"
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y wget ca-certificates \
     build-essential cmake pkg-config \
     libjpeg8-dev libtiff5-dev libjasper-dev libpng12-dev \
     libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
