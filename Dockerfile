@@ -7,7 +7,9 @@ RUN apt-get update && apt-get install -y wget ca-certificates \
     libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
     libxvidcore-dev libx264-dev \
     libgtk-3-dev \
-    libatlas-base-dev gfortran
+    libatlas-base-dev gfortran \
+    git curl vim python3-dev python3-pip \
+    libfreetype6-dev libhdf5-dev
 
 RUN wget -O opencv.tar.gz https://github.com/opencv/opencv/archive/3.3.1.tar.gz && \
     tar zxvf opencv.tar.gz && \
@@ -23,22 +25,10 @@ RUN cd opencv-3.3.1 && \
         -D INSTALL_C_EXAMPLES=OFF \
         -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.3.1/modules \
         -D BUILD_EXAMPLES=ON .. && \
-    make -j4
-
-
-
-FROM ubuntu:16.04
-MAINTAINER "Andrei Maksimov"
-
-COPY --from=opencv-builder /opencv-3.3.1 /opencv-3.3.1
-COPY --from=opencv-builder /opencv_contrib-3.3.1 /opencv_contrib-3.3.1
-
-RUN apt-get update && apt-get install -y wget ca-certificates \
-    build-essential cmake pkg-config \
-    git curl vim python3-dev python3-pip \
-    libfreetype6-dev libpng12-dev libhdf5-dev
-
-RUN cd /opencv-3.3.1/build && make install && ldconfig && cd / && rm -Rf /opencv-3.3.1 /opencv_contrib-3.3.1
+    make -j4 && \
+    make install && \
+    ldconfig && \
+    cd / && rm -Rf /opencv-3.3.1 /opencv_contrib-3.3.1
 
 RUN pip3 install --upgrade pip && \
     pip3 install tensorflow && \
