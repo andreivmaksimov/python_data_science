@@ -23,7 +23,7 @@ RUN cd opencv-3.3.1 && \
         -D INSTALL_C_EXAMPLES=OFF \
         -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.3.1/modules \
         -D BUILD_EXAMPLES=ON .. && \
-    make
+    make -j4
 
 
 
