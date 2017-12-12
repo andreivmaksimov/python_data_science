@@ -12,6 +12,7 @@ This is fully ready Docker container with:
  - Jupyter
  - Tensorflow
  - Keras
+ - OpenCV 3
 
 ## How to use
 
