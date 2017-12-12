@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/andreivmaksimov/python_data_science.svg?branch=master)](https://travis-ci.org/andreivmaksimov/python_data_science)
-
 # Python Data Science container
 This is fully ready Docker container with:
  - NumPy
