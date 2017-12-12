@@ -30,7 +30,7 @@ RUN cd opencv-3.3.1 && \
 FROM ubuntu:16.04
 MAINTAINER "Andrei Maksimov"
 
-COPY --from=opencv-builder /opencv-3.3.1 /
+COPY --from=opencv-builder /opencv-3.3.1 /opencv-3.3.1
 RUN cd /opencv-3.3.1/build && make install && ldconfig && cd / && rm -Rf /opencv-3.3.1
 
 RUN apt-get update && apt-get install -y wget ca-certificates \
