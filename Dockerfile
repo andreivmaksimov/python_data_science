@@ -31,13 +31,14 @@ FROM ubuntu:16.04
 MAINTAINER "Andrei Maksimov"
 
 COPY --from=opencv-builder /opencv-3.3.1 /opencv-3.3.1
+COPY --from=opencv-builder /opencv_contrib-3.3.1 /opencv_contrib-3.3.1
 
 RUN apt-get update && apt-get install -y wget ca-certificates \
     build-essential cmake pkg-config \
     git curl vim python3-dev python3-pip \
     libfreetype6-dev libpng12-dev libhdf5-dev
 
-RUN cd /opencv-3.3.1/build && make install && ldconfig && cd / && rm -Rf /opencv-3.3.1
+RUN cd /opencv-3.3.1/build && make install && ldconfig && cd / && rm -Rf /opencv-3.3.1 /opencv_contrib-3.3.1
 
 RUN pip3 install --upgrade pip && \
     pip3 install tensorflow && \
