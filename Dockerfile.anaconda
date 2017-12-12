@@ -4,6 +4,7 @@ MAINTAINER "Andrei Maksimov"
 RUN /opt/conda/bin/conda install jupyter -y && \
     /opt/conda/bin/conda install -c menpo opencv3 -y && \
     /opt/conda/bin/conda install numpy pandas scikit-learn matplotlib seaborn pyyaml h5py keras -y && \
+    /opt/conda/bin/conda upgrade dask && \
     pip install tensorflow
 
 RUN ["mkdir", "notebooks"]
