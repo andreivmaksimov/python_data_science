@@ -1,4 +1,7 @@
 # Python Data Science container
+
+[![CircleCI](https://circleci.com/gh/andreivmaksimov/python_data_science.svg?style=svg)](https://circleci.com/gh/andreivmaksimov/python_data_science)
+
 This is fully ready Docker container with:
  - NumPy
  - Pandas
@@ -12,12 +15,15 @@ This is fully ready Docker container with:
  - Keras
  - OpenCV 3
 
-## How to use
+We're building this container on top of [Ubuntu 16.04 Docker container](https://hub.docker.com/_/ubuntu/) ([Dockerfile](https://github.com/andreivmaksimov/python_data_science/blob/master/Dockerfile)) and [Anaconda Docker container](https://hub.docker.com/r/continuumio/anaconda3/) ([Dockerfile](https://github.com/andreivmaksimov/python_data_science/blob/master/Dockerfile.anaconda))
 
-We'll use ```notebooks``` Jupyter Notebooks:
+### Running container
+
+We'll use ```notebooks``` forlder to store Jupyter Notebooks:
 ```sh
 mkdir notebooks
 ```
+
 Run Docker container with the following command:
 ```sh
 docker run -it -p 8888:8888 -p 6006:6006 -d -v $(pwd)/notebooks:/notebooks amaksimov/python_data_science
