@@ -39,7 +39,7 @@ RUN pip3 install --upgrade pip && \
     pip3 install imutils
 
 RUN ["mkdir", "notebooks"]
-COPY jupyter_notebook_config.py /root/.jupyter/
+COPY conf/.jupyter /root/.jupyter
 COPY run_jupyter.sh /
 
 # Jupyter and Tensorboard ports
