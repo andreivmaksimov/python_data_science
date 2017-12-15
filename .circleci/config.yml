@@ -10,10 +10,10 @@ jobs:
 
      # build the application image
      - run: |
-        docker build -f Dockerfile -t amaksimov/python_data_science:$CIRCLE_BRANCH .
+        docker build -f Dockerfile -t amaksimov/python_data_science:latest .
         docker build -f Dockerfile.anaconda -t amaksimov/python_data_science:anaconda .
 
      # deploy the image
      - run: |
-        docker push amaksimov/python_data_science:$CIRCLE_BRANCH
+        docker push amaksimov/python_data_science:latest
         docker push amaksimov/python_data_science:anaconda
