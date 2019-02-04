@@ -1,19 +1,30 @@
 version: 2
 jobs:
- build:
-   machine: true
-   steps:
-     - checkout
+  build:
+    machine: true
+    steps:
+      - checkout
 
-     # login to Docker Hub
-     - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-
-     # build the application image
-     - run: |
+      - run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASS
         docker build -f Dockerfile -t amaksimov/python_data_science:latest .
-        docker build -f Dockerfile.anaconda -t amaksimov/python_data_science:anaconda .
-
-     # deploy the image
-     - run: |
         docker push amaksimov/python_data_science:latest
+
+  build_anaconda:
+    machine: true
+    docker:
+      - image: amaksimov/python_data_science:anaconda
+    steps:
+      - checkout
+
+      - run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASS
+        docker build -f Dockerfile.anaconda -t amaksimov/python_data_science:anaconda .
         docker push amaksimov/python_data_science:anaconda
+
+workflows:
+  version: 2
+  build_images:
+    jobs:
+      - build
+      - build_anaconda
